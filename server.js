@@ -90,12 +90,7 @@ function start () {
 
     //function to view all employees and restart application
     function viewAllEmployees() {
-        const query = `
-        SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name FROM employee
-        LEFT JOIN role ON employee.role_id = role.id
-        LEFT JOIN department ON role.department_id = department.id
-        LEFT JOIN employee manager ON manager.id = employee.manager_id;
-        `;
+        const query = `SELECT * FROM employee`;
         connection.query(query, (err, res) => {
             if (err) throw err;
             console.table(res);
@@ -105,7 +100,7 @@ function start () {
 
 //function to view all roles and restart application
     function viewAllRoles() {
-        const query = 'SELECT role.titles,roles.id, departments.department_name, roles.salary FROM roles JOIN departmenets on roles.department_id = departments.id';
+        const query = `SELECT * FROM roles`;
         connection.query(query, (err, res) => {
             if (err) throw err;
             console.table(res);
@@ -115,7 +110,7 @@ function start () {
 
         //function to view all departments and restart application
     function viewAllDepartments() {
-        const query = 'SELECT * FROM department';
+        const query = 'SELECT * FROM departments';
         connection.query( query, (err, res) => {
             if (err) throw err;
             console.table(res);
@@ -189,18 +184,51 @@ function start () {
     }
         //function to add emplyee and restart application
     function addEmployee() {
-        //get list from data base
-        connection.query("SELECT id, title FROM roles" , (err, res) => {
-            if (err) {
-                console.log("error");
-                return;
-            }
-            const roles = results.map (({id , title}) => ({
-                name: title,
-                value: id,
-            }));
+        connection.query ('SELECT id, title FROM roles', (err, res) => {
+            if (err) throw err;
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'first_name',
+                    message: 'Enter the first name of the new employee.',
+                },
+                {
+                    type: 'input',
+                    name: 'last_name',
+                    message: 'Enter the last name of the new employee.',
+                },
+                {
+                    type: 'list',
+                    name: 'roleId',
+                    message: 'Select the role of the new employee.',
+                    choices: res.map((roles) => roles.title),	
+                },
+                // {
+                //     type: 'list',
+                //     name: 'managerId',
+                //     message: 'Select the manager of the new employee.',
+                //     choices: res.map ((manager) => manager.id),
+                // },
+
+            ],
+
+        
+    then((answer) => {
+        const sql = `INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)`;
+        const values = [answer.first_name, answer.last_name, answer.roleId,answer.manager.Id,];
+        connection.query(sql, values, (err, res) => {
+            if (err) throw err;
+            console.log('Employee added!');
+            start();
         });
-    }
+    }));
+});
+                
+
+        //get list from data base
+
+        
+        
     
 
     //function to update employee role and restart application
@@ -215,7 +243,7 @@ function start () {
                     type: 'list',
                     name: 'employee',
                     message: 'Select the employee you would like to update.',
-                    choices: currentEmployees.map (
+                    choices: resEmployees.map (
                         (employee) => `${employee.first_name} ${employee.last_name}`
                     ),
                 },
@@ -223,15 +251,15 @@ function start () {
                     type: 'list',
                     name: 'role',
                     message: 'Select the new role of the employee.',
-                    choices: currentRoles.map((role) => role.title),
+                    choices: resRoles.map((role) => role.title),
                 }
             ])
             .then((answer) => {
-                const employee = currentEmployees.find(
+                const employee = res.Employees.find(
                     (employee) =>
                     `${employee.first_name} ${employee.last_name}` === answer.employee
                 );
-                const role = currentRoles.find(
+                const role = res.Roles.find(
                     (role) => role.title === answer.role);
                 const query = 'UPDATE employee SET role_id ? WHERE ?';
                 connection.query(
@@ -250,4 +278,4 @@ function start () {
 
     }
 
-
+}
