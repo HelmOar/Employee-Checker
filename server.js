@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // create the connection information for the sql database
 const connection = mysql.createConnection({
@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'Egypt2023',
-    database: 'employeeTracker_db',
+    database: 'employeeChecker_db',
 });
 
 //connect to the database and start the application
