@@ -215,7 +215,7 @@ function start () {
         
     .then((answer) => {
         const sql = `INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)`;
-        const values = [answer.first_name, answer.last_name, answer.roleId, answer.manager.Id,];
+        const values = [answer.first_name, answer.last_name, answer.role.id, answer.manager.id,];
         connection.query(sql, values, (err, res) => {
             if (err) throw err;
             console.log('Employee added!');
