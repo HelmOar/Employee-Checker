@@ -203,25 +203,25 @@ function start () {
                     message: 'Select the role of the new employee.',
                     choices: res.map((roles) => roles.title),	
                 },
-                // {
-                //     type: 'list',
-                //     name: 'managerId',
-                //     message: 'Select the manager of the new employee.',
-                //     choices: res.map ((manager) => manager.id),
-                // },
+                {
+                    type: 'list',
+                    name: 'managerId',
+                    message: 'Select the manager of the new employee.',
+                    choices: res.map ((manager) => manager.id),
+                },
 
-            ]
+            ])  
 
         
     .then((answer) => {
         const sql = `INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)`;
-        const values = [answer.first_name, answer.last_name, answer.roleId,answer.manager.Id,];
+        const values = [answer.first_name, answer.last_name, answer.roleId, answer.manager.Id,];
         connection.query(sql, values, (err, res) => {
             if (err) throw err;
             console.log('Employee added!');
             start();
         });
-    }));
+    });
 });
                 
 
