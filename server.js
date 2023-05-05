@@ -87,10 +87,12 @@ function start () {
                 break;
         }
     });
+}
 
     //function to view all employees and restart application
     function viewAllEmployees() {
-        const query = `SELECT * FROM employee`;
+        const query = `SELECT first_name, last_name, title, salary, department_name, manager_id FROM employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id`;
+
         connection.query(query, (err, res) => {
             if (err) throw err;
             console.table(res);
@@ -186,6 +188,8 @@ function start () {
     function addEmployee() {
         connection.query ('SELECT id, title FROM roles', (err, res) => {
             if (err) throw err;
+        connection.query ( 'SELECT id, first_name, last_name FROM employee', (err, res) => {
+            if (err) throw err;
             inquirer.prompt([
                 {
                     type: 'input',
@@ -199,22 +203,31 @@ function start () {
                 },
                 {
                     type: 'list',
-                    name: 'roleId',
+                    name: 'rolesId',
                     message: 'Select the role of the new employee.',
-                    choices: res.map((roles) => roles.title),	
+                    choices: res.map((roles) => {
+                        return {
+                            name: roles.title,
+                            value: roles.id,
+                        };
+                    }),
                 },
                 {
                     type: 'list',
                     name: 'managerId',
-                    message: 'Select the manager of the new employee.',
-                    choices: res.map ((manager) => manager.id),
+                    message: 'Select the manager ID of the new employee.',
+                    choices: res.map ((manager) => {
+                        return {
+                            value: manager.id,
+                        };
+                    }),
                 },
 
             ])  
 
         
     .then((answer) => {
-        const sql = `INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)`;
+        const sql = `INSERT INTO employee (first_name, last_name,  role_id, manager_id) VALUES (?, ?, ?, ?)`;
         console.log(answer);
         const values = [answer.first_name, answer.last_name, answer.roleId, answer.managerId,];
         connection.query(sql, values, (err, res) => {
@@ -277,6 +290,6 @@ function start () {
         });
     };
 
-    }
+ }) //function to update employee manager and restart application   
 
 }

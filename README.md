@@ -20,11 +20,11 @@ Employee-Checker is a command-line application whcih manages a company's Employe
 ## Installation
 - Clone the Repository from Github
 - Open the cloned repo in any code editor
-- Open the intergrated terminal for the document and complete the installation process by intiating node and Express.
-- You will also require [uuidv4](https://www.npmjs.com/package/uuidv4) in order to assign unique IDs to the notes.
+- Open the intergrated terminal for the document and complete the installation process by installing Inquirer.js and mySql2.
+- Initiate node and sign in to your mySql acocount.
 
 ## Usage
-- Open the [note-taker link](https://note-taker-cah.herokuapp.com/)
+- In the command line initiate the app with command - node server.js
 - Click "get started" to open the note taker.
 - Enter your note via the "title"and "text" fields.
 - Click the save icon to save the note.
