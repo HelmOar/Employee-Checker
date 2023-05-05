@@ -227,7 +227,7 @@ function start () {
 
         
     .then((answer) => {
-        const sql = `INSERT INTO employee (first_name, last_name,  role_id, manager_id) VALUES (?, ?, ?, ?)`;
+        const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)`;
         console.log(answer);
         const values = [answer.first_name, answer.last_name, answer.roleId, answer.managerId,];
         connection.query(sql, values, (err, res) => {
@@ -281,7 +281,7 @@ function start () {
                 );
                 const role = resRoles.find(
                     (role) => role.title === answer.role);
-                const query = 'UPDATE employee SET role_id ? WHERE ?';
+                const query = 'UPDATE employee SET role_id = ? WHERE id = ?';
                 connection.query(
                     query,
                     [role.id, employee.id],
