@@ -123,7 +123,7 @@ function start () {
         inquirer.prompt({
             
                 type: 'input',
-                name: 'department_name',
+                name: 'name',
                 message: 'Enter the name of the new department.',
             }),
 
@@ -163,7 +163,7 @@ function start () {
             ])
             .then((answer) => {
                 const department = res.find(
-                    (department) => department.name === answer.department
+                    (department) => department.department_name === answer.department
                 );
                 const query = 'INSERT INTO roles SET ?';
                 connection.query(
