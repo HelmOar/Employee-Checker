@@ -20,7 +20,7 @@ connection.connect((err) => {
 //function to start the application and prompt the user for what they would like to do
 
 function start () {
-    .prompt({
+   inquirer.prompt({
         type: 'list',
         name: 'action',
         message: 'What would you like to do?',
@@ -217,7 +217,7 @@ function start () {
                     choices: currentEmployees.map (
                         (employee) => `${employee.first_name} ${employee.last_name}`
                     ),
-                }
+                },
                 {
                     type: 'list',
                     name: 'role',
