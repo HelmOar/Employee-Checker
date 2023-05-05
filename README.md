@@ -11,7 +11,6 @@ Employee-Checker is a command-line application whcih manages a company's Employe
 - [Installation](#installation)
 - [Usage](#usage)
 - [Walk Through Video](#walkThrough)
-- [Deployed Link](#deployedLink)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [License](#license)
@@ -25,18 +24,14 @@ Employee-Checker is a command-line application whcih manages a company's Employe
 
 ## Usage
 - In the command line initiate the app with command - node server.js
-- Click "get started" to open the note taker.
-- Enter your note via the "title"and "text" fields.
-- Click the save icon to save the note.
-- Click the + icon to add further notes.
-- In addition, you can delete the note via the trash icon.
+- This will bring up the prompts from inquirer giving the user the options of actions they want to take.
+- These options include; view employees/departments/roles, add employees/departments/roles, update employees/roles.
+- If you choose the add or update functions, you will receive a success message. You can then view the new table
+
 
 ## Walk Through Video
 
 [Video](http..bla bal)
-
-## Deployed Link
-[note-taker](https://note-taker-cah.herokuapp.com/)
 
 ## Contributing
 chelmore1@bigpond.com

@@ -242,7 +242,10 @@ function start () {
         //get list from data base
 
         
-        
+    }) 
+
+}
+       
     
 
     //function to update employee role and restart application
@@ -252,12 +255,15 @@ function start () {
         const queryRoles = 'SELECT * FROM roles';
         connection.query(queryEmployees, (err, employees) => {
             if (err) throw err;
+        connection.query(queryRoles, (err, resRoles) => {
+            if (err) throw err;
+            console.log(resRoles);
             inquirer.prompt([
                 {
                     type: 'list',
                     name: 'employee',
                     message: 'Select the employee you would like to update.',
-                    choices: resEmployees.map (
+                    choices: employees.map (
                         (employee) => `${employee.first_name} ${employee.last_name}`
                     ),
                 },
@@ -269,11 +275,11 @@ function start () {
                 }
             ])
             .then((answer) => {
-                const employee = res.Employees.find(
+                const employee = employees.find(
                     (employee) =>
                     `${employee.first_name} ${employee.last_name}` === answer.employee
                 );
-                const role = res.Roles.find(
+                const role = resRoles.find(
                     (role) => role.title === answer.role);
                 const query = 'UPDATE employee SET role_id ? WHERE ?';
                 connection.query(
@@ -288,8 +294,6 @@ function start () {
                 );
             });
         });
-    };
-
- }) //function to update employee manager and restart application   
-
+    });
 }
+
