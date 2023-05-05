@@ -125,9 +125,9 @@ function start () {
                 type: 'input',
                 name: 'name',
                 message: 'Enter the name of the new department.',
-            }),
+            })
 
-        then((answer) =>   {
+        .then((answer) =>   {
             console.log(answer.name);
             const query = `INSERT INTO departments (department_name) VALUES ('${answer.name}')`;
             connection.query (query, (err, res) => {
@@ -210,10 +210,10 @@ function start () {
                 //     choices: res.map ((manager) => manager.id),
                 // },
 
-            ],
+            ]
 
         
-    then((answer) => {
+    .then((answer) => {
         const sql = `INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)`;
         const values = [answer.first_name, answer.last_name, answer.roleId,answer.manager.Id,];
         connection.query(sql, values, (err, res) => {

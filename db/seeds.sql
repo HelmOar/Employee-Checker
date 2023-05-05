@@ -1,4 +1,4 @@
-USE employeeChecker_db
+USE employeeChecker_db;
 INSERT INTO departments (department_name)
 VALUES
 ('Engineering'),
