@@ -131,7 +131,8 @@ function start () {
                 name: 'department_name',
                 message: 'Enter the name of the new department.',
             }),
-        .then((answer) =>   {
+
+        then((answer) =>   {
             console.log(answer.name);
             const query = `INSERT INTO departments (department_name) VALUES ('${answer.name}')`;
             connection.query (query, (err, res) => {

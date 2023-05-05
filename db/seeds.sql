@@ -1,3 +1,4 @@
+USE employeeChecker_db
 INSERT INTO departments (department_name)
 VALUES
 ('Engineering'),
@@ -23,15 +24,15 @@ VALUES
 ('Customer Service Manager', 160000, 7),
 ('Administration Manager', 150000, 8);
 
-INSERT INTO employee  (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
-('Emma', 'Thompson', 1, 1 ),
+('Emma', 'Thompson', 1, 1),
 ('Benjamin', 'Wilson', 2, 2),
 ('Olivia', 'Parker', 3, 3 ),
-('Jack', 'Edwards', 4, 4 ),
+('Jack', 'Edwards', 4, 4),
 ('Chloe', 'Green', 5, 5),
 ('Nathan', 'Patel', 6, 6),
 ('Leah', 'Anderson', 7, 7),
-('William', 'Brown', 8, 8),
+('William', 'Brown', 8, 8);
 
 
