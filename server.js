@@ -33,9 +33,9 @@ function start() {
             'Add an employee',
             'Add a role',
             'Add a department',
-            // 'Add a manager',
             'Update an employee role',
             "Delete an employee",
+            
             'Exit'
         ]
 
@@ -53,28 +53,10 @@ function start() {
                 break;
             case 'Add a department': addDepartment();
                 break;
-                // case 'Add a manager':
-                //     addManager();
-                //     break;
             case 'Update an employee role': updateEmployeeRole();
                 break;
-                // case 'View employees by manager':
-                //     viewEmployeesByManager();
-                //     break;
-                // case 'View employees by department':
-                //     viewEmployeesByDepartment();
-                //     break;
             case 'Delete an employee': deleteEmployee();
                 break;
-                // case 'Delete a role':
-                //     deleteRole();
-                //     break;
-                // case 'Delete a department':
-                //     deleteDepartment();
-                //     break;
-                // case 'View the total utilized budget of a department':
-                //     viewTotalBudget();
-                //     break;
             case 'Exit': connection.end();
                 console.log('Exiting application')
                 break;

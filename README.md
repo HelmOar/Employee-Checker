@@ -4,7 +4,7 @@
 
 
 ## Description
-Employee-Checker is a command-line application whcih manages a company's Employee database, using Node.js, Inquirer and MySql. Emplyoyee-CHecker allows the user to easily view and interact with information stored in a SQL data base. This interface, known as a content management systems (CMS), alllows the Employer to view departments, roles and employees, to add to these and to update Employee data.
+Employee-Checker is a command-line application which manages a company's Employee database, using Node.js, Inquirer and MySql. Emplyoyee-Checker allows the user to easily view and interact with information stored in a SQL data base. This interface, known as a content management systems (CMS), alllows the Employer to view departments, roles and employees, to add to these and to update Employee data. The application also has a delete employee function.
 
 
 ## Table of Contents
@@ -26,12 +26,12 @@ Employee-Checker is a command-line application whcih manages a company's Employe
 - In the command line initiate the app with command - node server.js
 - This will bring up the prompts from inquirer giving the user the options of actions they want to take.
 - These options include; view employees/departments/roles, add employees/departments/roles, update employees/roles.
-- If you choose the add or update functions, you will receive a success message. You can then view the new table
+- If you choose the add or update functions, you will receive a success message. You can then view the new table.
 
 
 ## Walk Through Video
 
-[Video](http..bla bal)
+[Video](https://youtu.be/nL2Xbbq9rqw)
 
 ## Contributing
 chelmore1@bigpond.com
