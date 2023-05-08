@@ -103,7 +103,8 @@ function viewAllDepartments() {
 
 // function to add a department and restart application
 function addDepartment() {
-    inquirer.prompt({type: 'input', name: 'name', message: 'Enter the name of the new department.'}).then((answer) => { // console.log(answer.name);
+    inquirer.prompt({type: 'input', name: 'name', message: 'Enter the name of the new department.'})
+    .then((answer) => { // console.log(answer.name);
         const query = `INSERT INTO departments (department_name) VALUES ('${
             answer.name
         }')`;
